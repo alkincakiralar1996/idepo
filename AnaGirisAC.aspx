@@ -32,12 +32,12 @@
             &nbsp;&nbsp;&nbsp;
             <asp:Label ID="LblSifre" runat="server" Text="Label"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="TxtSifre" runat="server"></asp:TextBox>
+            <asp:TextBox ID="TxtSifre" runat="server" TextMode="Password"></asp:TextBox>
         </p>
         <p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Button ID="BtnGiris" runat="server" Text="Button" Width="100px" />
-            <asp:RadioButtonList ID="rBtnDil" runat="server" CssClass="newStyle2">
+            <asp:RadioButtonList ID="rBtnDil" runat="server" CssClass="newStyle2" AutoPostBack="True" OnSelectedIndexChanged="rBtnDil_SelectedIndexChanged">
             </asp:RadioButtonList>
         </p>
     </form>
