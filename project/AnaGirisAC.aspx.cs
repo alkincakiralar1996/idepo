@@ -4,9 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.Sql;
+using System.Data.SqlClient;
+using System.Configuration;
 
-public partial class AnaGirisAC : System.Web.UI.Page
+public partial class AnaGirisAC : Page
 {
+    public string baglantiMetni = ConfigurationManager.ConnectionStrings[1].ConnectionString.ToString();
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -22,10 +28,6 @@ public partial class AnaGirisAC : System.Web.UI.Page
 
     }
 
-    protected void BtnGiris_Click(object sender, EventArgs e)
-    {
-
-    }
     protected void rBtnDil_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (rBtnDil.Items[0].Selected)
@@ -45,4 +47,18 @@ public partial class AnaGirisAC : System.Web.UI.Page
             rBtnDil.Items[1].Text = "Francais";
         }
     }
+
+    protected void BtnGiris_Click(object sender, EventArgs e)
+    {
+        SqlConnection cnn = new SqlConnection(baglantiMetni);
+        if (!(cnn.State == ConnectionState.Closed)) return;
+        cnn.Open();
+        SqlCommand cmd = new SqlCommand("select COUNT(*) from acKullanicilar where KullaniciAdi='" + TxtKullaniciAdi.Text +  "' and Sifre='" + TxtSifre.Text + "'", cnn);
+        int count = (int)cmd.ExecuteScalar();
+        //cnn.Close();
+        if (count == 0) return;
+        Session["ad"] = TxtKullaniciAdi.Text;
+        Response.Redirect("AnaSayfaAC.aspx");
+    }
+
 }

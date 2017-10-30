@@ -36,7 +36,7 @@
         </p>
         <p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="BtnGiris" runat="server" Text="Button" Width="100px" />
+            <asp:Button OnClick="BtnGiris_Click" ID="BtnGiris" runat="server" Text="Button" Width="100px" />
             <asp:RadioButtonList ID="rBtnDil" runat="server" CssClass="newStyle2" AutoPostBack="True" OnSelectedIndexChanged="rBtnDil_SelectedIndexChanged">
             </asp:RadioButtonList>
         </p>
